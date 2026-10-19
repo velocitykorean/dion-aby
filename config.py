@@ -33,13 +33,13 @@ IS_SOLO = True
 
 # Subtitle Position & Typography (Large, bold, single-line in open right zone)
 SUBTITLE_CENTER_X = 1360
-SUBTITLE_Y = 500
+SUBTITLE_Y = 470
 MAX_SUBTITLE_WIDTH = 880
 SUBTITLE_FONT_SIZE = 48
 
-# Audio Spectrum Visualizer (Directly below single-line subtitle, no box container)
+# Audio Spectrum Visualizer (Directly below single-line subtitle with generous breathing gap)
 VIS_CENTER_X = 1360
-VIS_BASE_Y = 600
+VIS_BASE_Y = 675
 VIS_NUM_BARS = 24
 VIS_BAR_WIDTH = 10
 VIS_BAR_SPACING = 8

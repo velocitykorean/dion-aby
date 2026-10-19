@@ -69,6 +69,62 @@ def infer_kokoro_language(voice_name: str) -> str:
     }
     return mapping.get(prefix, "en-us")
 
+def compute_acoustic_word_timings(words: list, dur_sec: float, curr_time: float, tokenizer=None, lang: str = "en-gb") -> list:
+    """
+    Computes precise, syllable- and phoneme-weighted word timestamps for speech synthesis,
+    accounting for word complexity, rapid functional words, and natural punctuation pauses.
+    """
+    if not words:
+        return []
+
+    weights = []
+    for w in words:
+        p_len = 0
+        if tokenizer:
+            try:
+                phonemes = tokenizer.phonemize(w, lang)
+                p_len = len(phonemes)
+            except Exception:
+                p_len = 0
+
+        if p_len == 0:
+            clean = re.sub(r'[^a-zA-Z0-9]', '', w.lower())
+            vowels = len(re.findall(r'[aeiouy]+', clean))
+            p_len = max(1, vowels) * 2 + max(1, len(clean))
+
+        # Punctuation pause weights (commas, dashes, terminal punctuation take acoustic pause time)
+        punct_pause = 0
+        stripped = w.rstrip('"\')]}')
+        if stripped.endswith((',', ';', ':', '—', '--', '-')):
+            punct_pause = 2.5
+        elif stripped.endswith(('.', '!', '?')):
+            punct_pause = 3.5
+
+        weights.append(max(1.0, float(p_len)) + punct_pause)
+
+    total_w = sum(weights)
+    chunk_words = []
+    elapsed = 0.0
+
+    for i, w in enumerate(words):
+        w_dur = (weights[i] / total_w) * dur_sec
+        # Spoken active duration: when punctuated, leave trailing pause for silence
+        stripped = w.rstrip('"\')]}')
+        is_punct = stripped.endswith((',', ';', ':', '—', '--', '-', '.', '!', '?'))
+        active_dur = w_dur * 0.82 if is_punct else w_dur
+
+        w_start = curr_time + elapsed
+        w_end = w_start + active_dur
+
+        chunk_words.append({
+            "word": w,
+            "start": round(w_start, 3),
+            "end": round(w_end, 3)
+        })
+        elapsed += w_dur
+
+    return chunk_words
+
 def generate_kokoro_dialogue(dialogue: list) -> tuple:
     """Synthesizes hyper-realistic human voice using local Kokoro-82M ONNX model."""
     from kokoro_onnx import Kokoro
@@ -89,7 +145,9 @@ def generate_kokoro_dialogue(dialogue: list) -> tuple:
     all_audio_segments = []
     all_chunks = []
     sr = 24000
-    curr_time = 0.25
+    initial_silence = 0.25
+    all_audio_segments.append(np.zeros(int(sr * initial_silence), dtype=np.float32))
+    curr_time = initial_silence
 
     total_turns = len(dialogue)
     print(f"[Kokoro TTS] Synthesizing {total_turns} turns with neural human inflections...")
@@ -112,14 +170,15 @@ def generate_kokoro_dialogue(dialogue: list) -> tuple:
             dur_sec = len(samples) / float(sr)
             all_audio_segments.append(samples)
 
-            # Word-level breakdown for highlighting
+            # Precise acoustic phoneme & syllable breakdown for highlighting
             words = sent.split()
-            word_dur = dur_sec / max(1, len(words))
-            chunk_words = [{
-                "word": w,
-                "start": round(curr_time + i * word_dur, 3),
-                "end": round(curr_time + (i + 1) * word_dur, 3)
-            } for i, w in enumerate(words)]
+            chunk_words = compute_acoustic_word_timings(
+                words=words,
+                dur_sec=dur_sec,
+                curr_time=curr_time,
+                tokenizer=kokoro.tokenizer,
+                lang=lang
+            )
 
             all_chunks.append({
                 "line_text": sent,

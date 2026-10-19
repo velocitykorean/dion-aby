@@ -221,7 +221,7 @@ def render_podcast_video(audio_path: str, subtitle_chunks: list, output_video_pa
 
         curr_c = single_line_chunks[active_chunk_idx] if active_chunk_idx < num_chunks else None
         chunk = None
-        if curr_c and (curr_c["start"] <= t_sec <= (curr_c["end"] + 0.6)):
+        if curr_c and (curr_c["start"] <= t_sec <= (curr_c["end"] + 0.15)):
             chunk = curr_c
 
         # 4. Draw single-line subtitle with real-time active word highlighting in radiant gold
