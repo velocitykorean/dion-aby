@@ -45,7 +45,7 @@ def save_episode_history(record: dict):
 
     print(f"[History] Recorded episode #{record['episode']} to history files.")
 
-def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: bool = False, preview_seconds: float = None):
+def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: bool = False, preview_seconds: float = None, force_publish: bool = False):
     active_voice = getattr(config, "KOKORO_VOICE", config.VOICE_HOST1) if getattr(config, "TTS_ENGINE", "kokoro") == "kokoro" else config.VOICE_HOST1
     print("=" * 75)
     print(f"    [YOUTUBE BOT] {config.CHANNEL_NAME} ({config.CHANNEL_HANDLE})")
@@ -126,11 +126,45 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
     }
     save_episode_history(record)
 
+    # Step 5: Multi-Platform Publishing Controller
+    # Schedule Rule: YouTube = Monday, Wednesday, Friday | Facebook = Every Day
+    weekday = datetime.now().weekday()
+    day_name = datetime.now().strftime("%A")
+    is_yt_day = weekday in [0, 2, 4]  # Mon=0, Wed=2, Fri=4
+
+    youtube_url = None
+    facebook_url = None
+
+    if not dry_run and not preview_seconds:
+        from publish_youtube import upload_to_youtube
+        from publish_facebook import upload_video_facebook
+
+        # 1. YouTube Publishing (Mon, Wed, Fri)
+        if is_yt_day or force_publish:
+            print(f"\n[Publishing] Today is {day_name}. Executing YouTube upload (Mon/Wed/Fri schedule)...")
+            youtube_url = upload_to_youtube(video_path, thumb_path, meta, privacy="public")
+            if youtube_url:
+                record["youtube_url"] = youtube_url
+        else:
+            print(f"\n[YouTube Schedule] Today is {day_name}. YouTube uploads run Mon/Wed/Fri. Skipping YouTube today (use --force-publish to override).")
+
+        # 2. Facebook Publishing (Every Day)
+        print(f"\n[Publishing] Executing Facebook upload (Daily schedule)...")
+        facebook_url = upload_video_facebook(video_path, meta["title"], meta["description"])
+        if facebook_url:
+            record["facebook_url"] = facebook_url
+
+        save_episode_history(record)
+
     print("\n" + "=" * 75)
     print(f"       PIPELINE COMPLETE! Ep. #{ep_num} ({total_dur/60:.1f} mins)")
     print(f"       Video File:     {video_path}")
     print(f"       Thumbnail:      {thumb_path}")
     print(f"       Metadata:       {meta_path}")
+    if youtube_url:
+        print(f"       YouTube:        {youtube_url}")
+    if facebook_url:
+        print(f"       Facebook:       {facebook_url}")
     print("=" * 75)
     return video_path
 
@@ -140,6 +174,13 @@ if __name__ == "__main__":
     parser.add_argument("--topic", type=str, default=None, help="Custom topic override")
     parser.add_argument("--dry-run", action="store_true", help="Skip uploads")
     parser.add_argument("--preview", type=float, default=None, help="Render preview seconds only (e.g. 30.0)")
+    parser.add_argument("--force-publish", action="store_true", help="Force publish regardless of schedule day")
     args = parser.parse_args()
 
-    run_auto_pipeline(target_minutes=args.duration, topic=args.topic, dry_run=args.dry_run, preview_seconds=args.preview)
+    run_auto_pipeline(
+        target_minutes=args.duration,
+        topic=args.topic,
+        dry_run=args.dry_run,
+        preview_seconds=args.preview,
+        force_publish=args.force_publish
+    )

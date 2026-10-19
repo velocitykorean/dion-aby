@@ -15,8 +15,13 @@ on:
         description: 'Preview seconds (e.g. 30.0 for quick test, 0 for full video)'
         required: false
         default: '0'
-  # schedule:
-  #   - cron: '0 14 * * 1,4' # Runs automatically twice a week (Monday & Thursday at 2 PM UTC)
+      force_publish:
+        description: 'Force upload regardless of scheduled day of week (true/false)'
+        required: false
+        default: 'false'
+        type: boolean
+  schedule:
+    - cron: '0 14 * * *' # Runs daily at 2:00 PM UTC (YouTube: Mon/Wed/Fri, Facebook: Daily)
 
 jobs:
   build-and-render:
@@ -77,6 +82,8 @@ jobs:
       - name: Execute Autonomous Video Pipeline
         env:
           POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
         run: |
           CMD="python auto_pipeline.py --duration ${{ github.event.inputs.duration || '20.0' }}"
           if [ -n "${{ github.event.inputs.topic }}" ]; then
@@ -84,6 +91,9 @@ jobs:
           fi
           if [ "${{ github.event.inputs.preview_seconds }}" != "0" ] && [ -n "${{ github.event.inputs.preview_seconds }}" ]; then
             CMD="$CMD --preview ${{ github.event.inputs.preview_seconds }}"
+          fi
+          if [ "${{ github.event.inputs.force_publish }}" = "true" ]; then
+            CMD="$CMD --force-publish"
           fi
           echo "Executing: $CMD"
           eval $CMD
