@@ -1,4 +1,3 @@
-// Daily Video History Log & Topic Registry
 const PODCAST_HISTORY = [
   {
     "episode": 1,
@@ -22,8 +21,9 @@ const PODCAST_HISTORY = [
     "thumbnail_file": "thumb_ep2_20261019_005110.jpg",
     "metadata_file": "metadata_ep2_20261019_005110.json",
     "channel": "THE DIONYSIAN ABYSS",
-    "handle": "@TheDionysianAbyss"
+    "handle": "@TheDionysianAbyss",
+    "youtube_url": "https://youtu.be/EWepeHebf30"
   }
 ];
-if (typeof module !== 'undefined' && module.exports) { module.exports = PODCAST_HISTORY; }
-if (typeof window !== 'undefined') { window.PODCAST_HISTORY = PODCAST_HISTORY; }
+if (typeof module !== 'undefined' && module.exports) module.exports = PODCAST_HISTORY;
+if (typeof window !== 'undefined') window.PODCAST_HISTORY = PODCAST_HISTORY;
