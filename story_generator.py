@@ -1,7 +1,7 @@
 import os, sys, json, time, requests, re
 import config
 
-# Pre-crafted master curriculum for The Dionysian Abyss channel
+# Pre-crafted master curriculum for The Dionysian Abyss channel (Friedrich Nietzsche masterworks)
 NIETZSCHE_CURRICULUM = [
     {
         "id": "ep_1",
@@ -21,36 +21,111 @@ NIETZSCHE_CURRICULUM = [
     {
         "id": "ep_2",
         "topic": "The Psychology of Resentment: How the Weak Conquered the Strong",
-        "focus": "An inquiry into Nietzsche's Genealogy of Morals, slave morality, and the subterranean poison of ressentiment.",
+        "focus": "An in-depth inquiry into Nietzsche's On the Genealogy of Morals, slave morality, and the subterranean poison of ressentiment.",
         "thumbnail_title_1": "THE HIDDEN POISON",
         "thumbnail_title_2": "OF RESENTMENT",
         "thumbnail_hook": "How Envy Became Morality",
         "acts": [
-            ("Act 1: The Birth of Master and Slave Morality", "Noble values versus reactive morality."),
-            ("Act 2: The Subterranean Venom of Ressentiment", "How repressed vengeance mutates into virtue."),
-            ("Act 3: The Ascetic Ideal and Guilt", "The fabrication of conscience and self-punishment."),
-            ("Act 4: The Modern Herd", "The triumph of comfort over greatness."),
-            ("Act 5: The Antidote: Sovereign Individuality", "Forging an aristocratic spirit beyond herd affirmation.")
+            ("Act 1: The Birth of Master and Slave Morality", "Noble values versus reactive morality, good and bad versus good and evil."),
+            ("Act 2: The Subterranean Venom of Ressentiment", "How repressed impotence and vengeance mutate into counterfeit virtue."),
+            ("Act 3: The Ascetic Ideal and Guilt", "The historical origins of bad conscience, debtor-creditor memory, and self-punishment."),
+            ("Act 4: The Modern Herd and the Last Man", "The triumph of comfort, safetyism, and egalitarian mediocrity."),
+            ("Act 5: The Antidote: Sovereign Individuality", "The capacity to forget, the pathos of distance, and heroic self-sovereignty.")
         ]
     },
     {
         "id": "ep_3",
-        "topic": "Amor Fati and The Eternal Return: The Ultimate Test of Greatness",
-        "focus": "The heaviest burden of Nietzsche's thought: living a life you would wish to repeat an infinite number of times.",
+        "topic": "Amor Fati and The Eternal Return: The Heaviest Weight",
+        "focus": "The supreme crucible of Nietzsche's thought: the demon's test of the Eternal Recurrence and the passionate love of fate.",
         "thumbnail_title_1": "THE GREATEST WEIGHT",
         "thumbnail_title_2": "THE ETERNAL RETURN",
         "thumbnail_hook": "Could You Relive Your Life Forever?",
         "acts": [
-            ("Act 1: The Demon in the Loneliest Loneliness", "The thought experiment that shatters mediocrity."),
-            ("Act 2: Beyond Regret and Remorse", "Why wishing away your suffering destroys your strength."),
-            ("Act 3: Amor Fati: Loving Fate Unconditionally", "The tragic affirmative joy of the Dionysian."),
-            ("Act 4: The Cycle of Time", "Cosmic recurrence and the sanctity of the present moment."),
-            ("Act 5: The Heroic Affirmation of Existence", "Singing yes to all of life.")
+            ("Act 1: The Demon in the Loneliest Loneliness", "The thought experiment that shatters superficial escapism."),
+            ("Act 2: Beyond Regret and Remorse", "Why wishing away your suffering destroys your armor; the unity of woe and joy."),
+            ("Act 3: Amor Fati: Loving Fate Unconditionally", "The tragic affirmative joy of the Dionysian; necessity as beauty."),
+            ("Act 4: The Cycle of Time", "Cosmic recurrence and the supreme aesthetic responsibility of each moment."),
+            ("Act 5: The Heroic Affirmation of Existence", "Singing yes to all of life: 'Was that life? Once more!'")
+        ]
+    },
+    {
+        "id": "ep_4",
+        "topic": "The Death of God and the Crisis of Nihilism: Overcoming the Abyss",
+        "focus": "The collapse of universal dogmas, the madman's lamp in the marketplace, and forging meaning without cosmic crutches.",
+        "thumbnail_title_1": "THE DEATH OF GOD",
+        "thumbnail_title_2": "OVERCOMING NIHILISM",
+        "thumbnail_hook": "What Happens When Truth Dies?",
+        "acts": [
+            ("Act 1: The Madman in the Marketplace", "Lighting lanterns in the bright morning; the murder of absolute truth."),
+            ("Act 2: The Unraveling of the Horizon", "Who gave us the sponge to wipe away the entire horizon?"),
+            ("Act 3: Passive vs. Active Nihilism", "Despair and resignation versus destruction as creative liberation."),
+            ("Act 4: The Modern Substitutes", "Ideological dogmas, secular religions, and false idols."),
+            ("Act 5: The Dawn of Self-Creation", "Becoming gods ourselves to be worthy of the deed.")
+        ]
+    },
+    {
+        "id": "ep_5",
+        "topic": "Thus Spoke Zarathustra: The Three Metamorphoses and The Overman",
+        "focus": "The evolutionary ascent of the human spirit from the bearing camel, to the roaring lion, to the sacred child.",
+        "thumbnail_title_1": "THE OVERMAN",
+        "thumbnail_title_2": "BEYOND MEDIOCRITY",
+        "thumbnail_hook": "Are You a Bridge or an End?",
+        "acts": [
+            ("Act 1: The Camel: Bearing the Sacred Burden", "The stage of obedience, learning, and carrying heavy weights in the desert."),
+            ("Act 2: The Lion: The Great 'Thou Shalt Not'", "Conquering the great dragon of moral obligation with the sacred 'I will'."),
+            ("Act 3: The Child: The Sacred 'Yes'", "Innocence, play, a self-propelling wheel, and the creation of new values."),
+            ("Act 4: Man as a Rope Over an Abyss", "Danger, overcoming, and why man is a bridge toward the Overman."),
+            ("Act 5: The Laughter of Zarathustra", "Transcending gravity with philosophical dance and radiant lightness.")
+        ]
+    },
+    {
+        "id": "ep_6",
+        "topic": "The Will to Power: The Secret Driving Engine of Life",
+        "focus": "Beyond Darwinian survival: life as an insatiable desire to discharge strength, expand, and overcome resistance.",
+        "thumbnail_title_1": "WILL TO POWER",
+        "thumbnail_title_2": "THE DRIVE OF LIFE",
+        "thumbnail_hook": "Why Survival is Not Enough",
+        "acts": [
+            ("Act 1: Beyond Survival: Life as Overcoming", "Critique of Darwin; life seeks not mere persistence, but expansion of power."),
+            ("Act 2: The Psychology of Self-Mastery", "Power over oneself as the highest and rarest form of the Will to Power."),
+            ("Act 3: Noble vs. Vulgar Power", "Cruelty as weakness; grace and magnanimity as the overflowing of strength."),
+            ("Act 4: Sublimation: Turning Instincts into Art", "Channeling raw primitive drives into philosophy, science, and beauty."),
+            ("Act 5: The Universe as Creative Chaos", "The cosmos as a sea of energetic forces clashing and renewing for eternity.")
+        ]
+    },
+    {
+        "id": "ep_7",
+        "topic": "Apollo and Dionysus: Order, Ecstasy, and the Secret of Greek Tragedy",
+        "focus": "The eternal conflict and divine marriage between the Apollonian dream of beauty and the Dionysian drunken revelry.",
+        "thumbnail_title_1": "ORDER & ECSTASY",
+        "thumbnail_title_2": "APOLLO & DIONYSUS",
+        "thumbnail_hook": "The Secret Tension of Genius",
+        "acts": [
+            ("Act 1: The Two Art Deities of Greece", "Apollo the sculptor and radiant dreamer; Dionysus the god of wine and primordial unity."),
+            ("Act 2: The Principium Individuationis", "The fragile boat on the raging sea; breaking through the illusion of separation."),
+            ("Act 3: The Birth of Tragedy", "How Greek tragedy reconciled cosmic terror with sublime aesthetic ecstasy."),
+            ("Act 4: The Death of Tragedy by Socrates", "Rationalism, optimism, and the pacification of instinctual life."),
+            ("Act 5: Reawakening the Dionysian", "Infusing modern rationalism with untamed artistic ecstasy.")
+        ]
+    },
+    {
+        "id": "ep_8",
+        "topic": "The Free Spirit: Solitude, Masks, and Independent Thinking",
+        "focus": "The psychology of the thinker who dares to separate from his tribe, love the high mountains, and wear the mask.",
+        "thumbnail_title_1": "THE FREE SPIRIT",
+        "thumbnail_title_2": "SACRED SOLITUDE",
+        "thumbnail_hook": "Why the Herd Fears Lone Thinkers",
+        "acts": [
+            ("Act 1: The Great Separation", "Breaking the chains of ancestral duty, custom, and herd comfort."),
+            ("Act 2: The Art of the Mask", "Why profound minds must veil their deepest convictions in a superficial world."),
+            ("Act 3: The Ice and High Mountains", "Cultivating intellectual rigor where the air is cold and the horizon wide."),
+            ("Act 4: The Dangers of Solitude", "Overcoming madness, despair, and the temptation to return to the warm herd."),
+            ("Act 5: The Joy of the Open Sea", "Setting sail across uncharted intellectual oceans with boundless courage.")
         ]
     }
 ]
 
-# Master 20-minute spoken script for Episode 1
+
 EPISODE_1_SCRIPT = [
     # --- ACT 1: Supposing Truth is a Woman ---
     {
@@ -258,6 +333,388 @@ EPISODE_1_SCRIPT = [
     }
 ]
 
+EPISODE_2_SCRIPT = [
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Welcome into the solemn sanctuary of The Dionysian Abyss. Today, we confront what is perhaps Friedrich Nietzsche's most devastating, incisive, and dangerous psychological excavation: the subterranean origin of our moral instincts, the revolt of the herd, and the venomous psychological engine known as ressentiment."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In his 1887 work, On the Genealogy of Morals, Nietzsche dared to ask a question that academic philosophy had avoided for millennia: Under what conditions did man invent those value judgments, good and evil? And what value do they themselves possess? Have they hitherto hindered or fostered human prosperity? Are they a sign of fullness and vitality, or a symptom of sickness and exhaustion?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche begins by looking into the deep etymological roots of ancient languages \u2014 Greek, Latin, and Old Germanic. He discovers that in all ancient noble societies, the concept of 'good' was never invented by those to whom goodness was shown. It was the noble, the powerful, the high-ranking, and the high-minded who felt and established themselves and their actions as good \u2014 that is, of the first rank \u2014 in contradistinction to all the low, low-minded, common, and plebeian."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "To the aristocratic spirit, 'good' was synonymous with nobility, beauty, courage, and physical triumph. And what was their concept of the opposite? It was simply 'bad' \u2014 meaning common, clumsy, unrefined, or unfortunate. The noble did not hate the commoner; he merely looked upon him with a gentle, pitying indifference, the pathos of distance."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The noble mode of valuation develops from a triumphant affirmation of itself: 'We the noble, we the good, we the beautiful, we the happy!' It says 'Yes' to itself spontaneously, and only subsequently seeks out an antithesis in order to affirm its own greatness even more gratefully and triumphantly."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "But then, Nietzsche reveals, a historic catastrophe took place \u2014 what he termed the slave revolt in morality. A priestly caste and a subjugated class of people, impotent to conquer their masters on the battlefield, suffered from a profound and festering grievance. Unable to act outwardly, their vengeance turned inward and mutated into something entirely new."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The slave morality does not begin with a proud self-affirmation. Its very beginning is a reactive 'No' to what is different, what is 'other,' what is 'not itself.' This radical reversal of the evaluating gaze \u2014 this necessary direction toward the outside instead of back onto oneself \u2014 is the very essence of ressentiment."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In slave morality, the original concept of the noble master \u2014 the strong, proud, self-asserting beast \u2014 was re-labeled as 'Evil.' And only after constructing this demonized image of the enemy did the slave conclude: 'Therefore, whoever is the opposite of this monster is good. And that is us: the meek, the powerless, the humble, and the obedient.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Let us examine the exact anatomy of this psychological venom. What is ressentiment? It is not mere anger, nor is it an ordinary burst of hatred. A healthy predator or an aristocratic warrior feels anger, strikes his foe, and in the next moment forgets it, laughing into the wind."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "True ressentiment belongs exclusively to the impotent. It is the emotion of the creature who is too weak to strike back, too fearful to challenge power openly, and too cowardly to bear the weight of his own mediocrity. He swallows his humiliation. He retreats into dark, humid cellars and broods over his grievances year after year."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche writes with venomous clarity: 'While the noble man lives in trust and openness with himself, the man of ressentiment is neither upright nor naive nor honest and straightforward with himself. His mind loves hiding places, secret paths and back doors; everything covert strikes him as his world, his security, his refreshment; he understands how to keep silent, how not to forget, how to wait, how to make temporary self-depreciation and humiliation into an art.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Consider how modern society operates. Is it not filled with individuals who cloak their personal envy in the sacred language of universal justice? When an individual cannot achieve excellence, he does not admire those who do; he seeks to tear them down to his own level. He calls his cowardice 'gentleness,' his inability to take revenge 'forgiveness,' his cowering submission 'patience,' and his helplessness 'virtue.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In the dark workshops of ressentiment, human weakness was sanctified. The sick forged a counterfeit currency where the inability to live passionately was rebranded as moral purity. They declared: 'Blessed are the meek, for they shall inherit the earth.' And in doing so, they created a cultural atmosphere where any display of sovereign strength, pride, or greatness was viewed with suspicion and guilt."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche invites us to listen to the whispers of this underworld: 'These cellar animals are full of revenge and hatred; what are they making of revenge and hatred? Have you ever heard these words? If you only trusted their words, would you suspect you were surrounded by creatures of pure ressentiment?' They answer: 'No, we are not vengeful. We simply long for the triumph of justice, and we pray for the eternal damnation of the strong.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "This psychological inversion represents the greatest triumph of spiritual warfare in history. The weak conquered the strong not by overpowering their bodies, but by poisoning their minds \u2014 by convincing the noble that their very strength was a sin against which they must repent."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Having dismantled the triumph of the herd, Nietzsche takes us deeper into the subterranean origin of guilt and the ascetic ideal. Where does the human conscience come from? Has man always possessed this inner court that whispers self-condemnation into the stillness of the night?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche answers with chilling historical precision: No. Conscience was not placed in human breast by a benevolent deity. Conscience was burned into human memory through fire, blood, and physical agony. Throughout prehistory, promises and debts were enforced through the infliction of physical suffering upon the debtor."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The oldest and most primitive relationship between human beings was the relationship between buyer and seller, creditor and debtor. When a man failed to pay his debt, the contract permitted the creditor to cut a proportionate piece of flesh from the debtor's body. Pain was the most powerful mnemonic aid in human history: 'A thing must be burned in so that it stays in the memory.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "When nomadic human beings were finally enclosed within the walls of civilized society, their wild, aggressive animal instincts \u2014 the instinct to hunt, to conquer, to overpower, to destroy \u2014 were suddenly outlawed by state laws and civic peace. What happens to a wild predator when you cage him and deny him any prey?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "He does not cease to be a predator. All instincts that do not discharge themselves outwardly turn inward! This is what Nietzsche calls the internalization of man: the entire internal world, previously as thin as a membrane, expanded and acquired depth, breadth, and height in the same measure as outward discharge was inhibited."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Denied an external enemy, man turned his claws upon himself. He made his own soul into a torture chamber. He declared his own natural vitality, his animal desires, his pride, and his sexual instincts to be filthy and corrupt. This self-inflicted laceration \u2014 this horrifying will to mistreat one's own nature \u2014 is the birth of bad conscience and moral guilt."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "And who stepped forward to manage this terrible sickness? The ascetic priest. The priest entered the sickroom of humanity and offered a catastrophic diagnosis: 'You suffer, my friend? You are tormented by your own soul? The fault is yours alone! You are guilty before the divine!' Instead of curing the wound, the priest deepened it, offering salvation only through further self-renunciation, fasting, and mortification of the flesh."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "We now emerge into the daylight of our own century. What is the legacy of this historical victory of ressentiment? Look around you at the landscape of modern culture. We live in an era that worships the herd above all things."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In Thus Spoke Zarathustra, Nietzsche delivered his prophetic warning of the Last Man \u2014 the ultimate product of centuries of domestic pacification and moral leveling. Zarathustra cried out to the crowd: 'The earth has become small, and upon it hops the Last Man, who maketh all things small. His species is indelible like that of the ground-flea; the Last Man liveth longest.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "What are the characteristics of the Last Man? He has invented comfort as his supreme idol. He boasts of his enlightened equality: 'No shepherd and one herd! Everyone wants the same, everyone is the same: whoever feels differently goes voluntarily into the madhouse.' He takes pride in having eliminated all friction, all danger, and all deep suffering from existence."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The Last Man has his little pleasure for the day and his little pleasure for the night, but he honors health above all else. He works, for work is an entertainment; but he takes care lest the entertainment should become troublesome. He no longer becomes poor or rich: both are too burdensome. 'We have discovered happiness,' say the Last Men, and they blink."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "How terrifyingly accurate this prophecy has proved to be. Modern democratic culture is consumed by an obsession with safetyism, emotional fragility, and the systematic suppression of exceptional individuals. Anyone who dares to stand out, to speak with unapologetic brilliance, or to demand greatness is immediately dragged back by the envy of the collective."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Ressentiment has now become institutionalized. It masquerades as social justice, as institutional bureaucracy, and as algorithmic conformity. It teaches human beings to identify as victims, for in the church of ressentiment, the victim is the only one who holds undisputed moral authority."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Yet, Nietzsche reminds us that all great human achievements \u2014 from the temples of Greece to the symphonies of Beethoven, from the philosophical heights to scientific breakthroughs \u2014 were forged not by herds seeking comfort, but by solitary individuals willing to suffer, to conquer, and to rise above the common denominator of their age."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "We arrive at the final, triumphant summit of our meditation. Having diagnosed the disease, what is the Nietzschean cure? How does the free spirit cleanse his bloodstream of the subterranean poison of ressentiment?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The first step is absolute psychological honesty. You must have the courage to inspect your own dark cellar. Where in your life are you masquerading your weakness as virtue? Where are you resenting the success, beauty, or strength of others because you lack the discipline to achieve it yourself?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche tells us that the sovereign individual is defined by one supreme capacity: the ability to forget. The noble man does not store insults in his soul; he does not nurse grudges for years. When stung by an adversary, he reacts immediately or casts it aside with a single shrug: 'An insult does not stick to a noble soul; it slides away like rain from a polished shield.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "To harbor resentment is to drink poison and expect your enemy to perish. It chains your attention to those you despise, allowing them to dictate your emotional reality from afar. The free spirit severs this chain with a clean blow. He does not waste his precious vitality in reactive battles against the herd."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "As Nietzsche writes in Ecce Homo: 'To be unable to take one's enemies, one's accidents, one's misdeeds seriously for very long \u2014 that is the sign of strong, full natures in whom there is an excess of re-forming, re-creating, healing formative power, which also makes one forget.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Instead of tearing down those who are above you, strive to elevate your own spirit. Cultivate what Nietzsche called the Pathos of Distance \u2014 the quiet dignity of standing alone, unconcerned with the praise or blame of the masses. Value your own internal standards above all external metrics of approval."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Do not demand that the world become soft so that you may avoid discomfort. Welcome resistance. Welcome hardship. For just as the diamond requires immense tectonic pressure to crystalize, the sovereign human soul requires adversity to discover the full magnitude of its power."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Walk out of the damp, resentful cellars into the cold mountain air. Say 'Yes' to your own life, with all its chaotic desires, tragic struggles, and boundless potential. Let the herd have their comforts and their small virtues; as for you \u2014 dare to be sovereign, dare to be dangerous, and dare to love your fate without compromise."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Thank you for descending with us into The Dionysian Abyss. If this inquiry into the psychology of ressentiment has illuminated the corridors of your mind, subscribe to our channel, share your reflections in the comments below, and walk forward with unbroken intellectual courage. Until our next descent \u2014 Amor Fati."
+    }
+]
+
+EPISODE_3_SCRIPT = [
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Welcome into the sacred stillness of The Dionysian Abyss. Today, we stand upon the highest, most dizzying precipice of Friedrich Nietzsche's philosophy. We confront the thought of thoughts \u2014 an idea so terrifying, so demanding, and yet so intoxicating that it acts as the ultimate crucible for the human soul: the doctrine of the Eternal Return, and its ecstatic twin, Amor Fati."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In August of 1881, while walking through the dense pine forests beside the lake of Silvaplana in the Swiss Alps, near a gigantic pyramidal block of stone, Nietzsche was seized by a sudden, overwhelming revelation. He described it as a thought six thousand feet beyond man and time."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "A year later, in aphorism three hundred and forty-one of The Gay Science, titled 'The Greatest Weight,' he gave this vision voice. He writes: 'What if some day or night a demon were to steal after you into your loneliest loneliness and say to you: \"This life as you now live it and have lived it, you will have to live once more and innumerable times more; and there will be nothing new in it, but every pain and every joy and every thought and sigh and everything unutterably small or great in your life will have to return to you, all in the same succession and sequence \u2014 even this spider and this moonlight between the trees, and even this moment and I myself.\"'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "'The eternal hourglass of existence is turned upside down again and again, and you with it, speck of dust!' Nietzsche asks us: 'Would you not throw yourself down and gnash your teeth and curse the demon who spoke thus? Or have you once experienced a tremendous moment when you would have answered him: \"Thou art a god, and never have I heard anything more divine!\"'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Consider the psychological gravity of this test. Nietzsche is not offering a comforting religious afterlife where your tears are wiped away, your mistakes erased, and your suffering rewarded with heavenly paradise. He is offering you nothing less than your exact, unedited life \u2014 with all its humiliating failures, chronic illnesses, heartbreaking betrayals, and quiet desperation \u2014 repeated infinitely throughout cosmic time."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "How does the ordinary person react to such a prospect? With absolute horror. Most human beings live in a perpetual state of postponement, consoling themselves with the illusion that tomorrow will be better, or that after death they will be redeemed. They treat the present moment as a mere waiting room for some future salvation."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The thought of the Eternal Return shatters this escapism like a hammer hitting glass. It eliminates all excuses. It demands: If this current hour, this current decision, this current posture of your spirit were to echo for all eternity, would you be proud of it, or would you be crushed by shame?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "It is the heaviest weight that can be placed upon human shoulders. Under its pressure, the weak, resentful, and half-hearted collapse into despair. But for the noble and resolute spirit, it becomes the greatest divine inspiration \u2014 the catalyst for an existence lived with heroic intensity."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "To understand how one can bear the weight of the Eternal Return, we must examine Nietzsche's fierce assault on the psychological diseases of regret, remorse, and guilt. Why do human beings spend so much of their brief existence wishing that the past had been different?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In Thus Spoke Zarathustra, in the chapter titled 'On Redemption,' Zarathustra confronts the tragic dilemma of human time: 'To redeem what is past, and to recreate all \"it was\" into a \"thus I willed it!\" \u2014 that alone should I call redemption.' But man's will is bound by the relentless forward march of time: 'Powerless against that which has been done, the will is an angry spectator of all that is past. The will cannot will backwards; that it cannot break time and time's desire, that is the will's loneliest affliction.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Because the average person cannot alter the past, his impotence mutates into gnawing remorse. He cries: 'If only I had chosen that other career! If only I had not married that person! If only I had avoided that illness or that catastrophe!' He views his past suffering as a meaningless wound, an accidental defect that ruined his destiny."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche warns that remorse is a double evil. The initial mistake was an error; but to dwell upon it with self-flagellation adds a second, lingering poison to the soul. Remorse does not mend what was broken; it merely paralyzes the will to create in the present."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Furthermore, Nietzsche makes a profound observation about the interconnectedness of all existence. Nothing in life stands alone. Your greatest triumphs, your sharpest insights, your emotional depth, and your inner resilience were not produced by your comfortable days in the sun. They were chiseled into you by the very tragedies, betrayals, and agonies you wish to erase!"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "If you remove the wound, you remove the scar that gave your spirit its armor. If you eliminate the grief, you extinguish the profound empathy that made you human. As Nietzsche writes: 'Did you ever say Yes to a single joy? O my friends, then you have said Yes to all woe as well. For all things are bound together, linked together, enamored of each other.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "You cannot pick and choose from the tapestry of life as if it were a market stall. You cannot accept the flower while cursing the mud from which its roots drew nourishment. To reject any part of your history is to reject the whole of your becoming."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "The free spirit renounces the childish indulgence of remorse. He looks back upon his most excruciating hours not with bitterness, but with reverence \u2014 recognizing them as the harsh masters that forged his sovereignty."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Having dismantled remorse, we reach the glowing center of Nietzsche's ethical vision: the principle of Amor Fati \u2014 the love of fate. What does it mean to love fate, not merely with cold stoic endurance, but with ecstatic, Dionysian passion?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Throughout the history of Western thought, various philosophies have preached resignation. Stoicism taught man to endure hardship with an immovable, stony countenance. Christianity taught man to bear his cross with the promise of future compensation. But Nietzsche rejected mere endurance as passive, tired, and lifeless."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "He writes in Ecce Homo: 'My formula for greatness in a human being is Amor Fati: that one wants nothing to be different, not forward, not backward, not in all eternity. Not merely bear what is necessary, still less conceal it \u2014 all idealism is mendacity in the face of what is necessary \u2014 but love it.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Consider the revolutionary radicalism of this statement. Nietzsche does not ask you to tolerate your fate; he asks you to love it. He asks you to look upon necessity \u2014 including sickness, betrayal, heartbreak, and death \u2014 not as hostile intruders upon your life, but as essential, harmonious notes in the grand, tragic symphony of existence."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Remember the conditions under which Nietzsche wrote these words. He was not a wealthy aristocrat relaxing in a sunlit villa. He was practically blind, afflicted with agonizing migraines that lasted for days, vomiting in dark hotel rooms across Europe, abandoned by his friends, rejected by the woman he loved, and ignored by the intellectual world of his era."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Yet from the very depths of his physical agony, he produced not bitter lamentations, but books vibrating with joy, gratitude, and golden laughter. In The Gay Science, he penned his famous New Year's resolution: 'I want to learn more and more to see as beautiful what is necessary in things; then I shall be one of those who make things beautiful. Amor Fati: let that be my love henceforth! I do not want to wage war against what is ugly. I do not want to accuse; I do not even want to accuse those who accuse. Looking away shall be my only negation. And all in all and on the whole: some day I wish to be only a Yes-sayer.'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "This is the heroic affirmation that separates the Overman from the herd. The herd curses the storm and demands a universe without suffering. The noble spirit gazes into the tempest, throws open his arms, and shouts into the wind: 'Strike harder! For I am built to weather the hurricane!'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Let us now contemplate the cosmic architecture of the Eternal Return. Whether Nietzsche intended this doctrine as a literal cosmological truth or as a supreme psychological thought experiment has been debated for more than a century by scholars across the world."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "In his unpublished notebooks from the eighteen-eighties, Nietzsche sketched scientific arguments for the recurrence of all things: If the universe consists of a finite amount of energy and matter, but extends across infinite time, then every possible combination, arrangement, and permutation of matter must inevitably occur, exhaust itself, and recur an infinite number of times."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Every word you speak at this moment, every leaf falling outside your window, every breath drawn by every living creature must return in the exact same sequence throughout eternity. But even if we treat the Eternal Return not as astrophysics, but as an existential mirror, its psychological power remains absolute."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "It asks you: How would your behavior change if you believed that your current actions were immortal? If every careless hour of procrastination, every cowardly compromise with your principles, and every mean-spirited word spoken in petty anger was not lost to the past, but carved permanently into the eternal bedrock of the cosmos?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Most people live carelessly because they assume that time is a disposable river \u2014 that their past disappears into nothingness, leaving them free to waste today without consequence. But under the doctrine of the Eternal Return, every second is pregnant with eternity. The present moment is not a stepping stone to tomorrow; it is the absolute center of cosmic history."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "This realization transforms existence from a casual drift into an act of supreme aesthetic responsibility. It demands that you treat your life not as an accident to be endured, but as a masterwork of art to be sculpted with intention, courage, and uncompromising devotion."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "When you live under the shadow of the eternal hourglass, you no longer tolerate mediocrity in yourself. You do not waste precious hours begging for validation from the crowd. You live every day with such clarity, such passion, and such integrity that if the demon were to whisper in your ear tonight, you could smile and answer: 'Once more!'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "We descend now toward the conclusion of our mountain journey. What is the ultimate invitation of Friedrich Nietzsche's philosophy for you, listening to these words in the quiet of this day?"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Nietzsche does not offer you an easy path. He does not promise that life will be fair, that virtue will be rewarded, or that sorrow will be abolished. On the contrary, he promises that the climb will be steep, that loneliness will often be your companion, and that the abyss will always gaze back into you."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Yet, he shows us that within the very heart of tragedy lies the source of incomparable human glory. The Dionysian spirit is the spirit that does not run from terror, but transforms terror into song. It is the joy of the dancer who knows that the stage will one day collapse, and yet dances with even greater elegance and fire because of that very knowledge."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Stop wishing for a life free of pain. Suffering is not your enemy; suffering is the chisel with which greatness carves your soul. When hardship strikes, do not ask: 'Why has this happened to me?' Ask instead: 'How shall I use this fire to temper my steel?'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Embrace your fate completely. Love your victories, but love your defeats with equal intensity, for without them you would remain naive and untested. Love your loves, but love the heartbreaks that revealed the untamed depth of your longing. Love the light, but honor the darkness that allowed you to behold the brilliance of the stars."
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Stand tall before the eternal demon. Look into the infinite mirrors of time, and let your spirit proclaim the triumphant words of Zarathustra: 'Was that life? Well then! Once more!'"
+    },
+    {
+        "speaker": "male",
+        "name": "The Dionysian",
+        "text": "Thank you for descending with us into The Dionysian Abyss. If these reflections on the Eternal Return and Amor Fati have stirred the quiet depths of your soul, subscribe to our channel, share this meditation with those who seek philosophical courage, and carry the torch of heroic affirmation into your life. Until our next descent \u2014 Amor Fati."
+    }
+]
+
+
 def load_history_topics() -> list:
     past = []
     for fname in ["published_videos.json", "history.json"]:
@@ -276,23 +733,111 @@ def load_history_topics() -> list:
                 pass
     return past
 
+def generate_dynamic_story_ai(topic: str = None, ep_num: int = 1, past_topics: list = None) -> dict:
+    """Uses Pollinations AI to dynamically generate a 100% original Nietzsche episode."""
+    if past_topics is None:
+        past_topics = load_history_topics()
+
+    print(f"[StoryGenerator] Invoking AI for dynamic philosophical episode #{ep_num}...")
+    headers = {"Content-Type": "application/json"}
+    api_key = os.environ.get("POLLINATIONS_API_KEY")
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
+
+    avoid_clause = f"AVOID repeating these already covered topics: {', '.join(past_topics)}" if past_topics else ""
+
+    prompt = f"""You are Friedrich Nietzsche's intellectual heir and the lead philosopher for 'The Dionysian Abyss' channel.
+Generate a master 20-minute spoken philosophical video episode (Episode #{ep_num}).
+{avoid_clause}
+Topic override: {topic if topic else 'Choose a profound, unexamined theme from Nietzsche (e.g. Master/Slave Morality, Beyond Good and Evil, Twilight of the Idols, Overcoming Nihilism, The Free Spirit)'}.
+
+Return ONLY valid JSON matching this exact structure:
+{{
+  "topic": "Comprehensive Title of the Nietzsche Topic",
+  "focus": "2-3 sentences explaining the core philosophical question.",
+  "thumbnail_title_1": "2-4 WORDS HEADLINE 1 (e.g. THE WILL TO POWER)",
+  "thumbnail_title_2": "2-4 WORDS HEADLINE 2 (e.g. DRIVE OF LIFE)",
+  "thumbnail_hook": "Short curiosity question (e.g. Why Survival is Never Enough)",
+  "acts": [
+    ["Act 1: Title", "Summary"],
+    ["Act 2: Title", "Summary"],
+    ["Act 3: Title", "Summary"],
+    ["Act 4: Title", "Summary"],
+    ["Act 5: Title", "Summary"]
+  ],
+  "dialogue": [
+    {{"speaker": "male", "name": "The Dionysian", "text": "Deep, poetic, aristocratic philosophical narration in the cadence of Nietzsche..."}}
+  ]
+}}
+Ensure the dialogue contains at least 35 to 40 rich turns (~2,500 words total) divided evenly across the 5 acts.
+"""
+
+    try:
+        r = requests.post(
+            "https://text.pollinations.ai/",
+            json={"messages": [{"role": "user", "content": prompt}], "jsonMode": True},
+            headers=headers,
+            timeout=90
+        )
+        if r.status_code == 200:
+            data = r.json()
+            if isinstance(data, dict) and data.get("dialogue") and len(data["dialogue"]) >= 15:
+                print(f"[StoryGenerator] AI successfully generated {len(data['dialogue'])} turns for '{data.get('topic')}'.")
+                return data
+    except Exception as e:
+        print(f"[StoryGenerator] AI generation encountered issue ({e}). Proceeding to curriculum...")
+
+    return None
+
 def generate_full_podcast_story(target_minutes: float = 20.0, topic: str = None, ep_num: int = 1) -> dict:
     """Generates the full story dialogue and chapter structure for the episode."""
     print(f"[StoryGenerator] Preparing script for Episode #{ep_num} (Target: {target_minutes:.1f} mins)...")
+    past_topics = load_history_topics()
 
-    # If Episode 1 or matching Nietzsche Women/Nature theme
-    if ep_num == 1 or not topic:
-        catalog_item = NIETZSCHE_CURRICULUM[0]
+    # 1. Select matching or next unperformed curriculum catalog item
+    catalog_item = None
+    if topic:
+        catalog_item = next((item for item in NIETZSCHE_CURRICULUM if item["topic"].lower() == topic.lower() or item["id"] == topic), None)
+
+    if not catalog_item:
+        # Check by ep_num if not yet performed
+        ep_id = f"ep_{ep_num}"
+        match_by_id = next((item for item in NIETZSCHE_CURRICULUM if item["id"] == ep_id), None)
+        if match_by_id and match_by_id["topic"] not in past_topics:
+            catalog_item = match_by_id
+
+    if not catalog_item:
+        # Find first unperformed curriculum item
+        for item in NIETZSCHE_CURRICULUM:
+            if item["topic"] not in past_topics:
+                catalog_item = item
+                break
+
+    if not catalog_item:
+        # If all curriculum items have been used, wrap or pick index
+        curriculum_idx = (ep_num - 1) % len(NIETZSCHE_CURRICULUM)
+        catalog_item = NIETZSCHE_CURRICULUM[curriculum_idx]
+
+    # 2. Select or generate full dialogue
+    dialogue = None
+    if catalog_item["id"] == "ep_1":
         dialogue = EPISODE_1_SCRIPT
+    elif catalog_item["id"] == "ep_2":
+        dialogue = EPISODE_2_SCRIPT
+    elif catalog_item["id"] == "ep_3":
+        dialogue = EPISODE_3_SCRIPT
     else:
-        # Check if topic matches other catalog items
-        match = next((item for item in NIETZSCHE_CURRICULUM if item["id"] == f"ep_{ep_num}"), None)
-        if match:
-            catalog_item = match
-            dialogue = EPISODE_1_SCRIPT
-        else:
-            catalog_item = NIETZSCHE_CURRICULUM[0]
-            dialogue = EPISODE_1_SCRIPT
+        # Try dynamic AI generation
+        ai_story = generate_dynamic_story_ai(topic=catalog_item["topic"], ep_num=ep_num, past_topics=past_topics)
+        if ai_story and ai_story.get("dialogue"):
+            catalog_item["thumbnail_title_1"] = ai_story.get("thumbnail_title_1", catalog_item["thumbnail_title_1"])
+            catalog_item["thumbnail_title_2"] = ai_story.get("thumbnail_title_2", catalog_item["thumbnail_title_2"])
+            catalog_item["thumbnail_hook"] = ai_story.get("thumbnail_hook", catalog_item["thumbnail_hook"])
+            dialogue = ai_story["dialogue"]
+
+    # Fallback to rich script if AI was offline
+    if not dialogue:
+        dialogue = EPISODE_2_SCRIPT if (ep_num % 2 == 0) else EPISODE_3_SCRIPT
 
     # Map chapters to dialogue turns
     total_turns = len(dialogue)
@@ -324,15 +869,23 @@ def generate_full_podcast_story(target_minutes: float = 20.0, topic: str = None,
         "dialogue": dialogue
     }
 
-def generate_metadata(topic: str, total_duration_sec: float, chapters: list, ep_num: int = 1) -> dict:
-    """Formats YouTube title, timestamps description, tags, and metadata."""
-    title = f"Friedrich Nietzsche on the Nature of Women, Love, and Truth | Full 20-Min Documentary (Ep. {ep_num:02d})"
+def generate_metadata(topic: str, total_duration_sec: float, chapters: list, ep_num: int = 1, story: dict = None) -> dict:
+    """Formats dynamic YouTube title, timestamps description, tags, and metadata."""
+    if story and story.get("focus"):
+        focus_desc = story["focus"]
+    else:
+        focus_desc = f"Friedrich Nietzsche's profound philosophical inquiry into {topic}."
+
+    clean_topic = topic.replace("Friedrich Nietzsche on ", "").replace("Friedrich Nietzsche: ", "")
+    title = f"Friedrich Nietzsche: {clean_topic} | Deep Philosophical Exploration (Ep. {ep_num:02d})"
+    if len(title) > 98:
+        title = f"Friedrich Nietzsche: {clean_topic[:60]}... (Ep. {ep_num:02d})"
 
     desc_lines = [
-        f"Friedrich Nietzsche's most provocative and profound inquiry into the psychology of human nature, romantic desire, the enigma of women, and the philosophy of the veil.",
+        f"{focus_desc}",
         "",
-        "\"Supposing truth is a woman — what then? Is there not ground for suspecting that all philosophers have understood women badly?\"",
-        " — Friedrich Nietzsche, Beyond Good and Evil (1886)",
+        '"My formula for greatness in a human being is Amor Fati: that one wants nothing to be different, not forward, not backward, not in all eternity."',
+        " — Friedrich Nietzsche, Ecce Homo (1888)",
         "",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
         "TIMESTAMPS & CHAPTERS:",
@@ -354,20 +907,21 @@ def generate_metadata(topic: str, total_duration_sec: float, chapters: list, ep_
         "",
         "RECOMMENDED NIETZSCHE READING:",
         "• Beyond Good and Evil (Prelude to a Philosophy of the Future)",
+        "• On the Genealogy of Morals (A Polemic)",
         "• The Gay Science (La Gaya Scienza)",
         "• Thus Spoke Zarathustra (A Book for All and None)",
-        "• Human, All Too Human (A Book for Free Spirits)",
+        "• Twilight of the Idols (How to Philosophize with a Hammer)",
         "• Ecce Homo: How One Becomes What One Is",
         "",
-        "#Nietzsche #Philosophy #HumanNature #BeyondGoodAndEvil #AmorFati #Zarathustra #Psychology #DeepPhilosophy"
+        f"#Nietzsche #Philosophy #HumanNature #{clean_topic.split()[0]} #AmorFati #Zarathustra #Psychology #DeepPhilosophy"
     ])
 
     return {
         "title": title,
         "description": "\n".join(desc_lines),
         "tags": [
-            "Friedrich Nietzsche", "Nietzsche", "Nietzsche on women", "Philosophy", "Human Nature",
-            "Beyond Good and Evil", "Thus Spoke Zarathustra", "Amor Fati", "Will to Power",
+            "Friedrich Nietzsche", "Nietzsche", clean_topic, "Philosophy", "Human Nature",
+            "On the Genealogy of Morals", "Beyond Good and Evil", "Thus Spoke Zarathustra", "Amor Fati", "Will to Power",
             "Philosophy documentary", "Deep thinking", "Wisdom", "Psychology", "Dionysian Abyss"
         ]
     }

@@ -80,10 +80,22 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
                 break
         ch["start_time"] = ch_time
 
-    # Step 3: High-CTR YouTube Thumbnail
+    # Step 3: High-CTR YouTube Thumbnail (Dynamic Rotating Portraits)
     print(f"\n[Step 3/4] Generating YouTube 1080p Thumbnail...")
     thumb_path = os.path.join(config.OUTPUT_DIR, f"thumb_ep{ep_num}_{timestamp}.jpg")
-    thumb_base_img = os.path.join(config.IMAGES_DIR, "nietzsche_portrait_1.jpg")
+    
+    available_portraits = [
+        os.path.join(config.IMAGES_DIR, "nietzsche_portrait_1.jpg"),
+        os.path.join(config.IMAGES_DIR, "nietzsche_portrait_2.jpg"),
+        os.path.join(config.IMAGES_DIR, "nietzsche_portrait_3.jpg"),
+    ]
+    valid_portraits = [p for p in available_portraits if os.path.exists(p)]
+    if not valid_portraits:
+        valid_portraits = [os.path.join(config.IMAGES_DIR, "nietzsche_portrait_1.jpg")]
+
+    thumb_base_img = valid_portraits[(ep_num - 1) % len(valid_portraits)]
+    print(f"[Thumbnail] Episode #{ep_num} assigned base portrait: {os.path.basename(thumb_base_img)}")
+
     generate_thumbnail(
         thumb_base_img,
         story["thumbnail_title_1"],
@@ -105,7 +117,7 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
     )
 
     # Generate metadata file (Title, Description, Timestamps, Tags)
-    meta = generate_metadata(story["topic"], total_dur, story["chapters"], ep_num=ep_num)
+    meta = generate_metadata(story["topic"], total_dur, story["chapters"], ep_num=ep_num, story=story)
     meta_path = os.path.join(config.OUTPUT_DIR, f"metadata_ep{ep_num}_{timestamp}.json")
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2, ensure_ascii=False)
