@@ -91,17 +91,12 @@ class AudioSpectrumVisualizer:
         total_w = self.num_bars * self.bar_width + (self.num_bars - 1) * self.bar_spacing
         start_x = self.center_x - (total_w // 2)
 
-        # Elegant Plate pill container
-        plate_w = total_w + 54
-        plate_h = self.max_height + 26
-        draw.rounded_rectangle([
-            (self.center_x - plate_w // 2, self.base_y - plate_h // 2),
-            (self.center_x + plate_w // 2, self.base_y + plate_h // 2)
-        ], radius=18, fill=self.plate_bg, outline=self.plate_outline, width=2)
-
+        # Floating equalizer bars directly below subtitle (no bounding box)
         for b in range(self.num_bars):
             bh = int(h_vals[b])
             bx = start_x + b * (self.bar_width + self.bar_spacing)
             by_top = self.base_y - (bh // 2)
             by_bot = self.base_y + (bh // 2)
-            draw.rounded_rectangle([(bx, by_top), (bx + self.bar_width, by_bot)], radius=5, fill=self.color)
+            # Subtle drop shadow for crisp visibility
+            draw.rounded_rectangle([(bx - 1, by_top - 1), (bx + self.bar_width + 1, by_bot + 1)], radius=4, fill=(0, 0, 0, 160))
+            draw.rounded_rectangle([(bx, by_top), (bx + self.bar_width, by_bot)], radius=4, fill=self.color)

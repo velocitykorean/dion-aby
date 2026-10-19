@@ -80,7 +80,7 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
                 break
         ch["start_time"] = ch_time
 
-    # Step 3: High-CTR YouTube Thumbnail (Dynamic Rotating Portraits)
+    # Step 3: High-CTR YouTube Thumbnail
     print(f"\n[Step 3/4] Generating YouTube 1080p Thumbnail...")
     thumb_path = os.path.join(config.OUTPUT_DIR, f"thumb_ep{ep_num}_{timestamp}.jpg")
     
@@ -94,7 +94,7 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
         valid_portraits = [os.path.join(config.IMAGES_DIR, "nietzsche_portrait_1.jpg")]
 
     thumb_base_img = valid_portraits[(ep_num - 1) % len(valid_portraits)]
-    print(f"[Thumbnail] Episode #{ep_num} assigned base portrait: {os.path.basename(thumb_base_img)}")
+    print(f"[Image Selection] Episode #{ep_num} designated single image: {os.path.basename(thumb_base_img)} (Used statically for entire video & thumbnail)")
 
     generate_thumbnail(
         thumb_base_img,
@@ -105,7 +105,7 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
         ep_number=ep_num
     )
 
-    # Step 4: Render Full 1080p Video with Dynamic Rotating Backgrounds & Visualizer
+    # Step 4: Render Full 1080p Video (Single Static Image, Single-Line Subtitles + Equalizer)
     print(f"\n[Step 4/4] Rendering 1080p Video via FFmpeg Pipe...")
     video_path = os.path.join(config.OUTPUT_DIR, f"dionysian_ep{ep_num}_{timestamp}.mp4")
     render_podcast_video(
@@ -113,7 +113,8 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
         subtitle_chunks,
         video_path,
         fps=config.VIDEO_FPS,
-        preview_seconds=preview_seconds
+        preview_seconds=preview_seconds,
+        bg_image_path=thumb_base_img
     )
 
     # Generate metadata file (Title, Description, Timestamps, Tags)
@@ -136,7 +137,8 @@ def run_auto_pipeline(target_minutes: float = 20.0, topic: str = None, dry_run: 
         "channel": config.CHANNEL_NAME,
         "handle": config.CHANNEL_HANDLE
     }
-    save_episode_history(record)
+    if not dry_run and not preview_seconds:
+        save_episode_history(record)
 
     # Step 5: Multi-Platform Publishing Controller
     # Schedule Rule: YouTube = Monday, Wednesday, Friday | Facebook = Every Day

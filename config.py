@@ -31,29 +31,21 @@ VIDEO_FPS = 30
 
 IS_SOLO = True
 
-# Subtitle Position & Typography (Placed in open dark right zone: X 1000-1760)
-SUBTITLE_CENTER_X = 1380
-SUBTITLE_Y = 340
-MAX_SUBTITLE_WIDTH = 760
-SUBTITLE_FONT_SIZE = 42
+# Subtitle Position & Typography (Large, bold, single-line in open right zone)
+SUBTITLE_CENTER_X = 1360
+SUBTITLE_Y = 500
+MAX_SUBTITLE_WIDTH = 880
+SUBTITLE_FONT_SIZE = 48
 
-# Audio Spectrum Visualizer (Anchored seamlessly inside the Wisdom Slate)
-VIS_CENTER_X = 1380
-VIS_BASE_Y = 780
-VIS_NUM_BARS = 18
-VIS_BAR_WIDTH = 12
-VIS_BAR_SPACING = 12
+# Audio Spectrum Visualizer (Directly below single-line subtitle, no box container)
+VIS_CENTER_X = 1360
+VIS_BASE_Y = 600
+VIS_NUM_BARS = 24
+VIS_BAR_WIDTH = 10
+VIS_BAR_SPACING = 8
 VIS_MIN_HEIGHT = 4
-VIS_MAX_HEIGHT = 52
+VIS_MAX_HEIGHT = 50
 VIS_COLOR = (245, 197, 66, 240)  # Luminous Antique Gold
-VIS_PLATE_BG = (16, 20, 28, 240)
-VIS_PLATE_OUTLINE = (218, 165, 32, 170)
-
-# Unified Wisdom Slate Dimensions
-PANEL_LEFT = 930
-PANEL_TOP = 180
-PANEL_RIGHT = 1830
-PANEL_BOT = 860
 
 # Voiceover Engine & Model Selection
 # Options for TTS_ENGINE:
