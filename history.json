@@ -36,5 +36,29 @@
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss",
     "youtube_url": "https://youtu.be/7CpjE6dWHVQ"
+  },
+  {
+    "episode": 3,
+    "topic": "Amor Fati and The Eternal Return: The Heaviest Weight",
+    "date": "2026-10-20T18:41:04.655462",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep3_20261020_182627.mp4",
+    "thumbnail_file": "thumb_ep3_20261020_182627.jpg",
+    "metadata_file": "metadata_ep3_20261020_182627.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 3,
+    "topic": "Amor Fati and The Eternal Return: The Heaviest Weight",
+    "date": "2026-10-20T18:41:04.655462",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep3_20261020_182627.mp4",
+    "thumbnail_file": "thumb_ep3_20261020_182627.jpg",
+    "metadata_file": "metadata_ep3_20261020_182627.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ]
