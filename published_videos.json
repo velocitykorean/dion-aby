@@ -85,5 +85,29 @@
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss",
     "youtube_url": "https://youtu.be/6k1Efa8zclk"
+  },
+  {
+    "episode": 5,
+    "topic": "Thus Spoke Zarathustra: The Three Metamorphoses and The Overman",
+    "date": "2026-10-22T18:46:40.003452",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep5_20261022_182759.mp4",
+    "thumbnail_file": "thumb_ep5_20261022_182759.jpg",
+    "metadata_file": "metadata_ep5_20261022_182759.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 5,
+    "topic": "Thus Spoke Zarathustra: The Three Metamorphoses and The Overman",
+    "date": "2026-10-22T18:46:40.003452",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep5_20261022_182759.mp4",
+    "thumbnail_file": "thumb_ep5_20261022_182759.jpg",
+    "metadata_file": "metadata_ep5_20261022_182759.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ]
