@@ -110,6 +110,31 @@ const PODCAST_HISTORY = [
     "metadata_file": "metadata_ep5_20261022_182759.json",
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 6,
+    "topic": "The Will to Power: The Secret Driving Engine of Life",
+    "date": "2026-10-23T18:33:15.765649",
+    "duration_sec": 979.85,
+    "duration_min": 16.33,
+    "video_file": "dionysian_ep6_20261023_181335.mp4",
+    "thumbnail_file": "thumb_ep6_20261023_181335.jpg",
+    "metadata_file": "metadata_ep6_20261023_181335.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 6,
+    "topic": "The Will to Power: The Secret Driving Engine of Life",
+    "date": "2026-10-23T18:33:15.765649",
+    "duration_sec": 979.85,
+    "duration_min": 16.33,
+    "video_file": "dionysian_ep6_20261023_181335.mp4",
+    "thumbnail_file": "thumb_ep6_20261023_181335.jpg",
+    "metadata_file": "metadata_ep6_20261023_181335.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss",
+    "youtube_url": "https://youtu.be/oINc-SIL8Ps"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) { module.exports = PODCAST_HISTORY; }
