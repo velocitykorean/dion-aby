@@ -135,6 +135,30 @@ const PODCAST_HISTORY = [
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss",
     "youtube_url": "https://youtu.be/oINc-SIL8Ps"
+  },
+  {
+    "episode": 7,
+    "topic": "Apollo and Dionysus: Order, Ecstasy, and the Secret of Greek Tragedy",
+    "date": "2026-10-24T17:29:24.469541",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep7_20261024_171926.mp4",
+    "thumbnail_file": "thumb_ep7_20261024_171926.jpg",
+    "metadata_file": "metadata_ep7_20261024_171926.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 7,
+    "topic": "Apollo and Dionysus: Order, Ecstasy, and the Secret of Greek Tragedy",
+    "date": "2026-10-24T17:29:24.469541",
+    "duration_sec": 921.18,
+    "duration_min": 15.35,
+    "video_file": "dionysian_ep7_20261024_171926.mp4",
+    "thumbnail_file": "thumb_ep7_20261024_171926.jpg",
+    "metadata_file": "metadata_ep7_20261024_171926.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) { module.exports = PODCAST_HISTORY; }
