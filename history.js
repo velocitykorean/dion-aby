@@ -159,6 +159,30 @@ const PODCAST_HISTORY = [
     "metadata_file": "metadata_ep7_20261024_171926.json",
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 8,
+    "topic": "The Free Spirit: Solitude, Masks, and Independent Thinking",
+    "date": "2026-10-25T17:53:15.602790",
+    "duration_sec": 979.85,
+    "duration_min": 16.33,
+    "video_file": "dionysian_ep8_20261025_173316.mp4",
+    "thumbnail_file": "thumb_ep8_20261025_173316.jpg",
+    "metadata_file": "metadata_ep8_20261025_173316.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 8,
+    "topic": "The Free Spirit: Solitude, Masks, and Independent Thinking",
+    "date": "2026-10-25T17:53:15.602790",
+    "duration_sec": 979.85,
+    "duration_min": 16.33,
+    "video_file": "dionysian_ep8_20261025_173316.mp4",
+    "thumbnail_file": "thumb_ep8_20261025_173316.jpg",
+    "metadata_file": "metadata_ep8_20261025_173316.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) { module.exports = PODCAST_HISTORY; }
