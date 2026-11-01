@@ -329,5 +329,29 @@
     "metadata_file": "metadata_ep9_20261031_182534.json",
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 9,
+    "topic": "Friedrich Nietzsche on the Nature of Women, Love, and the Mask of Truth",
+    "date": "2026-11-01T19:15:40.766267",
+    "duration_sec": 1239.71,
+    "duration_min": 20.66,
+    "video_file": "dionysian_ep9_20261101_185053.mp4",
+    "thumbnail_file": "thumb_ep9_20261101_185053.jpg",
+    "metadata_file": "metadata_ep9_20261101_185053.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 9,
+    "topic": "Friedrich Nietzsche on the Nature of Women, Love, and the Mask of Truth",
+    "date": "2026-11-01T19:15:40.766267",
+    "duration_sec": 1239.71,
+    "duration_min": 20.66,
+    "video_file": "dionysian_ep9_20261101_185053.mp4",
+    "thumbnail_file": "thumb_ep9_20261101_185053.jpg",
+    "metadata_file": "metadata_ep9_20261101_185053.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ]
