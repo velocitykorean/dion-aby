@@ -477,6 +477,30 @@ const PODCAST_HISTORY = [
     "channel": "THE DIONYSIAN ABYSS",
     "handle": "@TheDionysianAbyss",
     "youtube_url": "https://youtu.be/X39DLKqrSHE"
+  },
+  {
+    "episode": 9,
+    "topic": "Friedrich Nietzsche on the Nature of Women, Love, and the Mask of Truth",
+    "date": "2026-11-07T19:01:47.917267",
+    "duration_sec": 1239.71,
+    "duration_min": 20.66,
+    "video_file": "dionysian_ep9_20261107_183753.mp4",
+    "thumbnail_file": "thumb_ep9_20261107_183753.jpg",
+    "metadata_file": "metadata_ep9_20261107_183753.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
+  },
+  {
+    "episode": 9,
+    "topic": "Friedrich Nietzsche on the Nature of Women, Love, and the Mask of Truth",
+    "date": "2026-11-07T19:01:47.917267",
+    "duration_sec": 1239.71,
+    "duration_min": 20.66,
+    "video_file": "dionysian_ep9_20261107_183753.mp4",
+    "thumbnail_file": "thumb_ep9_20261107_183753.jpg",
+    "metadata_file": "metadata_ep9_20261107_183753.json",
+    "channel": "THE DIONYSIAN ABYSS",
+    "handle": "@TheDionysianAbyss"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) { module.exports = PODCAST_HISTORY; }
